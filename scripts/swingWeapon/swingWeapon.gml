@@ -9,7 +9,7 @@ function swingWeapon(origin_x, origin_y, range, arc, angle, damage){
 			with (hitlist[| i]) {
 				
 				// if it hits
-				if (point_direction(origin_x, origin_y, x, y)-angle < arc/2) {
+				if (abs(point_direction(origin_x, origin_y, x, y)-angle) < arc/2 + 2) {
 					inc_damage = floor(damage - armor);
 					
 					// if it deals damage
