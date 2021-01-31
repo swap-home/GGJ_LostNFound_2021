@@ -2,6 +2,7 @@ var up_pressed = keyboard_check(ord("W"));
 var down_pressed = keyboard_check(ord("S"));
 var right_pressed = keyboard_check(ord("D"));
 var left_pressed = keyboard_check(ord("A"));
+var pickup_pressed = keyboard_check_pressed(ord("E"));
 
 if (up_pressed) {motion_add(90, movespeed);}
 if (down_pressed) {motion_add(270, movespeed);}
@@ -11,10 +12,55 @@ if (up_pressed || down_pressed || right_pressed || left_pressed) {
 	speed = min(speed, movespeed);
 }
 
+if (pickup_pressed) {
+	var pickups = ds_list_create();
+	collision_circle_list(x, y, pickup_radius, o_pickup, false, true, pickups, true);
 
+	for (var i = 0; i < ds_list_size(pickups); ++i) {
+		// get first closest pickup that isn't moving
+		if (pickups[| i].speed > 0) {continue;}
+		
+		switch (pickups[| i].object_index) {
+			case o_heart:
+				ds_list_add(equipment, ITEM_HEART);
+				break;
+			case o_heart_half:
+				ds_list_add(equipment, ITEM_HEART_HALF);
+				break;
+			case o_heart_empty:
+				// heart 
+				break;
+			case o_armor:
+				ds_list_add(equipment, ITEM_ARMOR);
+				sprite_index = s_player_armored; // check armored by checking sprite :EZ:
+				break;
+			case o_dagger:
+				ds_list_add(equipment, ITEM_DAGGER);
+				reequipWeapon();
+				break;
+			case o_sword:
+				ds_list_add(equipment, ITEM_SWORD);
+				reequipWeapon();
+				break;
+			case o_spear:
+				ds_list_add(equipment, ITEM_SPEAR);
+				reequipWeapon();
+				break;
+			case o_longsword:
+				ds_list_add(equipment, ITEM_LONGSWORD);
+				reequipWeapon();
+				break;
+		}
+		instance_destroy(pickups[| i]);
+		break;
+	}
+	ds_list_destroy(pickups);
+}
 if x>room_width x=room_width; if x<0 x=0; if y>room_height y=room_height; if y<0 y=0;
 
-if point_distance(x,y,mouse_x,mouse_y) > 16 {
+
+// update sprite for self and weapon
+if point_distance(x,y,mouse_x,mouse_y) > 1 {
 	var facing_angle = point_direction(x, y, mouse_x, mouse_y);
 	image_xscale = (facing_angle > 90 && facing_angle < 270) ? -1 : 1;
 	
@@ -35,6 +81,7 @@ if point_distance(x,y,mouse_x,mouse_y) > 16 {
 
 }
 
+// update weapon state
 if (weapon_cooldown-- < 0) {weapon_cooldown = 0;}
 if (weapon_type != ITEM_NONE && mouse_check_button_pressed(mb_left)) {
 	var arc = 0;
@@ -42,27 +89,28 @@ if (weapon_type != ITEM_NONE && mouse_check_button_pressed(mb_left)) {
 	var cooldown = 0;
 	var damage = 0;
 	switch (weapon_type) {
+		// range based on sprite width
 		case ITEM_DAGGER:
 			arc = 30;
-			range = abs(s_dagger.sprite_width) + abs(s_dagger.sprite_xoffset);
+			range = abs(sprite_get_width(s_dagger)) + abs(sprite_get_xoffset(s_dagger));
 			cooldown = 10;
 			damage = 1;
 			break;
 		case ITEM_SWORD:
 			arc = 70;
-			range = s_sword.sprite_width + abs(s_sword.sprite_xoffset);
+			range = abs(sprite_get_width(s_sword)) + abs(sprite_get_width(s_sword));
 			cooldown = 30;
 			damage = 2;
 			break;
 		case ITEM_SPEAR:
 			arc = 30;
-			range = s_spear.sprite_width + abs(s_spear.sprite_xoffset);
+			range = abs(sprite_get_width(s_spear)) + abs(sprite_get_width(s_spear));
 			cooldown = 30;
 			damage = 2;
 			break;
 		case ITEM_LONGSWORD:
 			arc = 60;
-			range = s_longsword.sprite_width + abs(s_longsword.sprite_xoffset);
+			range = abs(sprite_get_width(s_longsword)) + abs(sprite_get_width(s_longsword));
 			cooldown = 30;
 			damage = 2;
 			break;
@@ -74,6 +122,8 @@ if (weapon_type != ITEM_NONE && mouse_check_button_pressed(mb_left)) {
 	weaponId.arc = arc;
 }
 
+
+// update invincibility frames
 if (invincibility_frames-- <= 0) {
 	image_alpha = 1;
 	invincibility_frames = 0;

@@ -9,7 +9,8 @@ projectile_speed = 6;
 projectile_range = 1200;
 projectile_duration = 0;
 projectile_duration_max = 0; // calculate from range / speed during init, or -1 if infinite
-
+projectile_bounce = 0;
+projectile_bounce_max = 0;
 projectile_homing = false;
 
 // unused

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Scripts.yy",
+    "name": "anyObject",
+    "path": "folders/Scripts/anyObject.yy",
   },
   "resourceVersion": "1.0",
-  "name": "equipWeapon",
+  "name": "getItemObject",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -1,11 +1,7 @@
 var damage = contact_damage;
 var attackerId = id;
 with (other) {
-	if (invincibility_frames <= 0) {
-		life -= damage;
-		knockback(attackerId, id, damage*10);
-		invincibility_frames = invincibility_frames_max;
-	}
+	takeHit(attackerId, damage);
 }
 
 var collision_direction = point_direction(id.x, id.y, other.x, other.y);

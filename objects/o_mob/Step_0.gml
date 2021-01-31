@@ -1,5 +1,6 @@
 event_inherited();
 
+if (!instance_exists(o_player)) {state = AI_IDLE;}
 // AI State management
 var next_state = state;
 switch (state) {
@@ -11,7 +12,7 @@ switch (state) {
 			move_target[0] = x + lengthdir_x(move_dist, move_dir);
 			move_target[1] = y + lengthdir_y(move_dist, move_dir);
 		}
-		if (idle_aggro_timer-- <= 0 || distance_to_object(o_player) < idle_aggro_distance) {
+		if (idle_aggro_timer-- <= 0 || (instance_exists(o_player) && distance_to_object(o_player)) < idle_aggro_distance) {
 			next_state = AI_AGGRO;
 			break;
 		}

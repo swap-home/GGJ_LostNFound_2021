@@ -5,10 +5,12 @@
 #macro ITEM_LONGSWORD 4
 
 #macro ITEM_HEART 5
-#macro ITEM_ARMOR 6
+#macro ITEM_HEART_HALF 6
+#macro ITEM_HEART_EMPTY 7
+#macro ITEM_ARMOR 8
 
 movespeed = 3;
-life = 5;
+life = 0;
 friction = 1;
 
 invincibility_frames = 0;
@@ -18,7 +20,7 @@ weaponId = instance_create_layer(x, y, "Effects", o_weapon);
 weaponId.sprite_index = -1;
 weapon_type = ITEM_NONE;
 weapon_rspeed = 360; 
-
+pickup_radius = 24;
 equipment = ds_list_create();
 repeat(life) {
 	ds_list_add(equipment, ITEM_HEART);
