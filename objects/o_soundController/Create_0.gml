@@ -1,5 +1,5 @@
 var musicid = snd_bg;
 randomize();
-if (irandom(100) < 1) musicid = snd_bgloop;
+if (irandom(100) < 10) musicid = snd_bgloop;
 
 audio_play_sound(musicid, 100, 1);
