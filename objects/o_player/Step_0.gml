@@ -16,7 +16,7 @@ if x>room_width x=room_width; if x<0 x=0; if y>room_height y=room_height; if y<0
 
 if point_distance(x,y,mouse_x,mouse_y) > 16 {
 	var facing_angle = point_direction(x, y, mouse_x, mouse_y);
-	image_xscale = (facing_angle > 90 && facing_angle < 180) ? -1 : 1;
+	image_xscale = (facing_angle > 90 && facing_angle < 270) ? -1 : 1;
 	
 	var playerId = id;
 	with (weaponId) {
@@ -36,31 +36,31 @@ if point_distance(x,y,mouse_x,mouse_y) > 16 {
 }
 
 if (weapon_cooldown-- < 0) {weapon_cooldown = 0;}
-if (weapon_type != WEAPON_NONE && mouse_check_button_pressed(mb_left)) {
+if (weapon_type != ITEM_NONE && mouse_check_button_pressed(mb_left)) {
 	var arc = 0;
 	var range = 0;
 	var cooldown = 0;
 	var damage = 0;
 	switch (weapon_type) {
-		case WEAPON_DAGGER:
+		case ITEM_DAGGER:
 			arc = 30;
 			range = abs(s_dagger.sprite_width) + abs(s_dagger.sprite_xoffset);
 			cooldown = 10;
 			damage = 1;
 			break;
-		case WEAPON_SWORD:
+		case ITEM_SWORD:
 			arc = 70;
 			range = s_sword.sprite_width + abs(s_sword.sprite_xoffset);
 			cooldown = 30;
 			damage = 2;
 			break;
-		case WEAPON_SPEAR:
+		case ITEM_SPEAR:
 			arc = 30;
 			range = s_spear.sprite_width + abs(s_spear.sprite_xoffset);
 			cooldown = 30;
 			damage = 2;
 			break;
-		case WEAPON_LONGSWORD:
+		case ITEM_LONGSWORD:
 			arc = 60;
 			range = s_longsword.sprite_width + abs(s_longsword.sprite_xoffset);
 			cooldown = 30;

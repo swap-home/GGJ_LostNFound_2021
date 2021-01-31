@@ -1,17 +1,25 @@
-#macro WEAPON_NONE 0
-#macro WEAPON_DAGGER 1
-#macro WEAPON_SWORD 2
-#macro WEAPON_SPEAR 3
-#macro WEAPON_LONGSWORD 4
+#macro ITEM_NONE 0
+#macro ITEM_DAGGER 1
+#macro ITEM_SWORD 2
+#macro ITEM_SPEAR 3
+#macro ITEM_LONGSWORD 4
+
+#macro ITEM_HEART 5
+#macro ITEM_ARMOR 6
 
 movespeed = 3;
-life = 50;
+life = 5;
 friction = 1;
 
 invincibility_frames = 0;
 invincibility_frames_max = 45;
 weapon_cooldown = 0;
 weaponId = instance_create_layer(x, y, "Effects", o_weapon);
-weaponId.sprite_index = s_dagger;
-weapon_type = WEAPON_DAGGER;
+weaponId.sprite_index = -1;
+weapon_type = ITEM_NONE;
 weapon_rspeed = 360; 
+
+equipment = ds_list_create();
+repeat(life) {
+	ds_list_add(equipment, ITEM_HEART);
+}

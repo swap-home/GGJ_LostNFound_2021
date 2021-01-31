@@ -10,7 +10,7 @@
   "bbox_left": 0,
   "bbox_right": 511,
   "bbox_top": 0,
-  "bbox_bottom": 633,
+  "bbox_bottom": 639,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -21,8 +21,8 @@
     "path": "texturegroups/Default",
   },
   "swatchColours": null,
-  "gridX": 0,
-  "gridY": 0,
+  "gridX": 32,
+  "gridY": 32,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"5363c485-17bf-4008-a857-7aeee128fca5","path":"sprites/Dungeon_Tileset/Dungeon_Tileset.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"5363c485-17bf-4008-a857-7aeee128fca5","path":"sprites/Dungeon_Tileset/Dungeon_Tileset.yy",},"LayerId":{"name":"99c7cff3-fc04-4137-89d7-77239d8e264a","path":"sprites/Dungeon_Tileset/Dungeon_Tileset.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
