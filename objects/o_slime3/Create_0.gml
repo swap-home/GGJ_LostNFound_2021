@@ -1,7 +1,7 @@
 event_inherited();
 
 life = 3;
-movespeed = 4;
+movespeed = 2;
 
 idle_aggro_distance = 500;
 

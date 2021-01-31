@@ -1,7 +1,7 @@
 event_inherited();
 
 life = 2;
-movespeed = 4;
+movespeed = 2;
 
 aggro_attack_range_min = 0;
 aggro_attack_range_max = 64;

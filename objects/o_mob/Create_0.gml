@@ -5,21 +5,21 @@ attack_target = [];
 
 state = AI_IDLE;
 
-idle_move_range_min = 64;
-idle_move_range_max = 64;
+idle_move_range_min = 32;
+idle_move_range_max = 32;
 
 idle_move_cooldown = 0;
 idle_move_cooldown_min = 120;
 idle_move_cooldown_max = 180;
 
-idle_aggro_distance = 200;
+idle_aggro_distance = 120;
 
 idle_aggro_timer = 0;
 idle_aggro_timer_min = 300;
-idle_aggro_timer_max = 600;
+idle_aggro_timer_max = 900;
 
-aggro_move_range_min = 64;
-aggro_move_range_max = 64;
+aggro_move_range_min = 32;
+aggro_move_range_max = 32;
 
 aggro_move_cooldown = 0;
 aggro_move_cooldown_min = 55;

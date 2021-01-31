@@ -40,6 +40,9 @@ state = next_state;
 
 // attack virtual function her
 if (array_length_1d(attack_target) > 0) {
+	//draw correct direction
+	var attack_direction = point_direction(x, y, attack_target[0], attack_target[1]);
+	image_xscale = (attack_direction > 90 && attack_direction < 270) ? -1 : 1;
 	switch (aggro_attack_method) {
 		case ATTACK_DASH:
 			if (aggro_attack_delay-- <= 0) {
@@ -51,7 +54,7 @@ if (array_length_1d(attack_target) > 0) {
 		case ATTACK_PROJ:
 			if (aggro_attack_delay-- <= 0) {
 				aggro_attack_delay = irandom_range(aggro_attack_delay_min, aggro_attack_delay_max);
-				var newProj = instance_create_layer(x, y, "Projectiles", aggro_attack_projectile_object);
+				var newProj = instance_create_layer(x, y, "Effects", aggro_attack_projectile_object);
 				var mobId = id;
 				with (newProj) {
 					parent_id = mobId;
@@ -66,8 +69,9 @@ if (array_length_1d(attack_target) > 0) {
 }
 
 if (array_length_1d(move_target) > 0) {
+	//draw correct direction
+	var move_direction = point_direction(x, y, move_target[0], move_target[1]);
+	image_xscale = (move_direction > 90 && move_direction < 270) ? -1 : 1;
 	move_target = moveTo(move_target[0], move_target[1], movespeed);
 	return;
 }
-
-

@@ -15,26 +15,63 @@ if (up_pressed || down_pressed || right_pressed || left_pressed) {
 if x>room_width x=room_width; if x<0 x=0; if y>room_height y=room_height; if y<0 y=0;
 
 if point_distance(x,y,mouse_x,mouse_y) > 16 {
-	var facing_angle = point_direction(x+lengthdir_x(12,image_angle-90),y+lengthdir_y(12,image_angle-90),mouse_x,mouse_y);
-	var a = facing_angle-image_angle;
+	var facing_angle = point_direction(x, y, mouse_x, mouse_y);
+	image_xscale = (facing_angle > 90 && facing_angle < 180) ? -1 : 1;
+	
+	var playerId = id;
+	with (weaponId) {
+		x = playerId.x;
+		y = playerId.y;
+		if (animation_timer <= 0) {
+			var a = facing_angle-image_angle;
 
-	if (abs(a) < 180) image_angle += rspeed*sign(a) else image_angle -= rspeed*sign(a);
-	if (abs(a) <= rspeed) image_angle = facing_angle;
+			if (abs(a) < 180) image_angle += playerId.weapon_rspeed*sign(a) else image_angle -= playerId.weapon_rspeed*sign(a);
+			if (abs(a) <= playerId.weapon_rspeed) image_angle = facing_angle;
 
-	if image_angle > 360 image_angle = 0;
-	if image_angle < 0   image_angle = 360;
+			if image_angle > 360 image_angle = 0;
+			if image_angle < 0   image_angle = 360;
+		}
+	}
+
 }
 
-if (mouse_check_button_pressed(mb_left)) {
-	//sword
-	if (true) {
-		var arc = 90;
-		var range = 72;
-		weapon_cooldown = swingWeapon(x, y, range, arc, image_angle, 1);
-		var eff = instance_create_layer(x, y, "Instances", o_sword);
-		eff.image_angle = image_angle + arc/2;
-		eff.arc = arc;
+if (weapon_cooldown-- < 0) {weapon_cooldown = 0;}
+if (weapon_type != WEAPON_NONE && mouse_check_button_pressed(mb_left)) {
+	var arc = 0;
+	var range = 0;
+	var cooldown = 0;
+	var damage = 0;
+	switch (weapon_type) {
+		case WEAPON_DAGGER:
+			arc = 30;
+			range = abs(s_dagger.sprite_width) + abs(s_dagger.sprite_xoffset);
+			cooldown = 10;
+			damage = 1;
+			break;
+		case WEAPON_SWORD:
+			arc = 70;
+			range = s_sword.sprite_width + abs(s_sword.sprite_xoffset);
+			cooldown = 30;
+			damage = 2;
+			break;
+		case WEAPON_SPEAR:
+			arc = 30;
+			range = s_spear.sprite_width + abs(s_spear.sprite_xoffset);
+			cooldown = 30;
+			damage = 2;
+			break;
+		case WEAPON_LONGSWORD:
+			arc = 60;
+			range = s_longsword.sprite_width + abs(s_longsword.sprite_xoffset);
+			cooldown = 30;
+			damage = 2;
+			break;
 	}
+	swingWeapon(x, y, range, arc, weaponId.image_angle, damage);
+	weapon_cooldown = cooldown;
+	weaponId.animation_timer = 5;
+	weaponId.image_angle += arc/2;
+	weaponId.arc = arc;
 }
 
 if (invincibility_frames-- <= 0) {

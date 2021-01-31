@@ -2,20 +2,20 @@
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
-  "origin": 3,
+  "origin": 9,
   "preMultiplyAlpha": false,
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 71,
+  "bbox_right": 20,
   "bbox_top": 0,
-  "bbox_bottom": 5,
+  "bbox_bottom": 9,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 72,
-  "height": 6,
+  "width": 21,
+  "height": 10,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,9 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"792ada95-14ef-425b-a5ad-ff374d73a957","path":"sprites/s_sword/s_sword.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"792ada95-14ef-425b-a5ad-ff374d73a957","path":"sprites/s_sword/s_sword.yy",},"LayerId":{"name":"4b149dce-fe0a-4183-a201-df9a76cd72e5","path":"sprites/s_sword/s_sword.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sword","path":"sprites/s_sword/s_sword.yy",},"resourceVersion":"1.0","name":"792ada95-14ef-425b-a5ad-ff374d73a957","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"5a5ec403-46cb-49e5-98c7-028a9ce71cc7","path":"sprites/s_sword/s_sword.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"5a5ec403-46cb-49e5-98c7-028a9ce71cc7","path":"sprites/s_sword/s_sword.yy",},"LayerId":{"name":"b07dd6f4-47d6-41ac-a34d-4deacac743bc","path":"sprites/s_sword/s_sword.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"s_sword","path":"sprites/s_sword/s_sword.yy",},"resourceVersion":"1.0","name":"5a5ec403-46cb-49e5-98c7-028a9ce71cc7","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"s_sword","path":"sprites/s_sword/s_sword.yy",},
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"06c19447-bec8-421f-a5b5-70dc28ff380c","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"792ada95-14ef-425b-a5ad-ff374d73a957","path":"sprites/s_sword/s_sword.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"ea1a00b7-3798-4cb2-b039-b9fae5a2011c","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"5a5ec403-46cb-49e5-98c7-028a9ce71cc7","path":"sprites/s_sword/s_sword.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -54,8 +54,8 @@
     "backdropHeight": 768,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
-    "xorigin": 0,
-    "yorigin": 3,
+    "xorigin": -8,
+    "yorigin": 5,
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"s_sword","path":"sprites/s_sword/s_sword.yy",},
@@ -65,7 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"4b149dce-fe0a-4183-a201-df9a76cd72e5","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"b07dd6f4-47d6-41ac-a34d-4deacac743bc","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "Weapons",
