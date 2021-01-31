@@ -12,7 +12,7 @@ idle_move_cooldown = 0;
 idle_move_cooldown_min = 120;
 idle_move_cooldown_max = 180;
 
-idle_aggro_distance = 300;
+idle_aggro_distance = 200;
 
 idle_aggro_timer = 0;
 idle_aggro_timer_min = 300;
@@ -32,4 +32,13 @@ aggro_attack_cooldown = 0;
 aggro_attack_cooldown_min = 45;
 aggro_attack_cooldown_max = 45;
 
+aggro_attack_delay = 0;
+aggro_attack_delay_min = 0;
+aggro_attack_delay_max = 0;
+aggro_attack_dash_multi = 1;
+
+contact_damage = 1;
+
 aggro_attack_method = ATTACK_DASH;
+
+aggro_attack_projectile_object = noone;
