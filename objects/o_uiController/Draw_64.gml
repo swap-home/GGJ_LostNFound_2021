@@ -6,6 +6,7 @@ var ui_scale = 3;
 var item_margin = 24 * ui_scale;
 var ui_health_offset_x = 32 * ui_scale;
 var ui_health_offset_y = 32 * ui_scale;
+var ui_health_icon_radius = 8 * ui_scale;
 var ui_boss_healthbar_offset_x = ui_health_offset_x;
 var ui_boss_healthbar_offset_y = ui_health_offset_y + item_margin;
 var ui_boss_healthbar_max_width = 200 * ui_scale;
@@ -56,18 +57,18 @@ for (var i = 0; i < ds_list_size(o_player.equipment); ++i) {
 			break;
 	}
 	if (i == found_weapon_index) {bgcolor = c_black;}
-	draw_circle_color(ui_health_offset_x + i*item_margin, ui_health_offset_y, 8*ui_scale, bgcolor, bgcolor, true);
+	draw_circle_color(ui_health_offset_x + i*item_margin, ui_health_offset_y, ui_health_icon_radius, bgcolor, bgcolor, true);
 }
 
 if (instance_exists(o_boss)) {
 	var origColor = draw_get_color();
 	var boss_health_percentage = o_boss.life / o_boss.life_max;
 	draw_set_color(c_black);
-	draw_rectangle(ui_boss_healthbar_offset_x, ui_boss_healthbar_offset_y, 
-		ui_boss_healthbar_offset_x + ui_boss_healthbar_max_width, 
-		ui_boss_healthbar_offset_y + ui_boss_healthbar_max_height, true);
+	draw_rectangle(ui_boss_healthbar_offset_x-ui_health_icon_radius-1, ui_boss_healthbar_offset_y-1, 
+		ui_boss_healthbar_offset_x + ui_boss_healthbar_max_width+1, 
+		ui_boss_healthbar_offset_y + ui_boss_healthbar_max_height+1, true);
 	draw_set_color(c_red);
-	draw_rectangle(ui_boss_healthbar_offset_x, ui_boss_healthbar_offset_y, 
+	draw_rectangle(ui_boss_healthbar_offset_x-ui_health_icon_radius, ui_boss_healthbar_offset_y, 
 		ui_boss_healthbar_offset_x + ui_boss_healthbar_max_width * boss_health_percentage, 
 		ui_boss_healthbar_offset_y + ui_boss_healthbar_max_height, false);
 	draw_set_color(origColor);

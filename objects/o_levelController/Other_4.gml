@@ -18,7 +18,10 @@ for (var i = 0; i < ds_list_size(nextroom_enemies); ++i) {
 		var check_coords = [0, 0];
 		check_coords[0] = random(room_width);
 		check_coords[1] = random(room_height);
-		if (collision_point(check_coords[0], check_coords[1], o_blocker, false, true) != noone) {
+		var spawning_sprite = object_get_sprite(nextroom_enemies[| i]);
+		var x1 = check_coords[0] - sprite_get_xoffset(spawning_sprite);
+		var y1 = check_coords[1] - sprite_get_yoffset(spawning_sprite);
+		if (collision_rectangle(x1, y1, x1 + sprite_get_width(spawning_sprite), y1 + sprite_get_height(spawning_sprite), o_blocker, false, true) == noone) {
 			spawned = true;
 			instance_create_layer(check_coords[0], check_coords[1], "Instances", nextroom_enemies[| i]);
 		}
@@ -31,7 +34,7 @@ for (var i = 0; i < ds_list_size(nextroom_items); ++i) {
 		var check_coords = [0,0];
 		check_coords[0] = random(room_width);
 		check_coords[1] = random(room_height);
-		if (collision_point(check_coords[0], check_coords[1], o_blocker, false, true) != noone) {
+		if (collision_point(check_coords[0], check_coords[1], o_blocker, false, true) == noone) {
 			spawned = true;
 			instance_create_layer(check_coords[0], check_coords[1], "Effects", nextroom_items[| i]);
 		}
