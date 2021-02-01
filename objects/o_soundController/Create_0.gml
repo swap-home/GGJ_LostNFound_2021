@@ -1,5 +1,4 @@
-var musicid = snd_bg;
-randomize();
-if (irandom(100) < 10) musicid = snd_bgloop;
+bgId = snd_bg_mob;
+if (irandom(100) < 1) bgId = snd_bgloop_jerma;
 
-audio_play_sound(musicid, 100, 1);
+audio_play_sound(bgId, 100, 1);

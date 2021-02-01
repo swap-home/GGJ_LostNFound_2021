@@ -10,7 +10,7 @@
 #macro ITEM_ARMOR 8
 
 movespeed = 3;
-life = 0;
+start_life = 5;
 friction = 1;
 
 invincibility_frames = 0;
@@ -22,6 +22,6 @@ weapon_type = ITEM_NONE;
 weapon_rspeed = 360; 
 pickup_radius = 24;
 equipment = ds_list_create();
-repeat(life) {
+repeat(start_life) {
 	ds_list_add(equipment, ITEM_HEART);
 }

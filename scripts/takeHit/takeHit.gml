@@ -1,6 +1,7 @@
 function takeHit(attackerId, damage){
 	
 	if (invincibility_frames <= 0) {
+		with (o_levelController) {hits_taken_this_room++; modifyDifficulty(-1);}
 		if (ds_list_size(equipment) == 0) {
 			instance_destroy();
 			return;
@@ -20,8 +21,11 @@ function takeHit(attackerId, damage){
 		if (item_type == ITEM_HEART_HALF) {item_type = ITEM_HEART_EMPTY;}
 		else if (item_type == ITEM_HEART) {item_type = ITEM_HEART_HALF;}
 		
-		// If it was armor, change sprite
-		if (item_type == ITEM_ARMOR) {sprite_index = s_player;}
+		// If it was armor and there is no more armor in equipment, change sprite
+		if (item_type == ITEM_ARMOR &&
+			ds_list_find_index(equipment, ITEM_ARMOR) == -1) {
+				sprite_index = s_player;
+		}
 	
 		// If it was the equipped weapon, find something to reequip
 		if (dropEquippedWeapon) {reequipWeapon();}

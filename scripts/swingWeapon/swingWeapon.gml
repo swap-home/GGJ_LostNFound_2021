@@ -2,7 +2,8 @@
 function swingWeapon(origin_x, origin_y, range, arc, angle, damage){
 	var hitlist = ds_list_create();
 	var number_hit = collision_circle_list(x, y, range, o_enemy, true, true, hitlist, true);
-	var knockback_per_damage = 10;
+	var knockback_base = 5;
+	var knockback_per_damage = 2.5;
 	var stun_per_damage = 30;
 	var playerId = id;
 	if number_hit > 0 {
@@ -15,6 +16,7 @@ function swingWeapon(origin_x, origin_y, range, arc, angle, damage){
 					
 					// if it deals damage
 					if (inc_damage > 0) {
+						with (o_levelController) {modifyDifficulty(0.1);}
 						life -= inc_damage;
 						if (life < damage) life = 0;
 					
@@ -23,7 +25,7 @@ function swingWeapon(origin_x, origin_y, range, arc, angle, damage){
 						attack_target = [];
 						idle_move_cooldown = damage * stun_per_damage;
 						aggro_move_cooldown = damage * stun_per_damage;
-						knockback(playerId, id, damage * knockback_per_damage);
+						knockback(playerId, id, knockback_base + damage * knockback_per_damage);
 					}
 				}
 			}

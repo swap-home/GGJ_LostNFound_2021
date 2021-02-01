@@ -1,7 +1,24 @@
 if (!instance_exists(o_player)) {
-	draw_text(view_xport[0] + view_wport[0]/2, view_yport + view_hport[0]/2, "You died. Click to restart");
+	var originalColor = draw_get_color();
+	draw_set_halign(fa_center);
+	draw_set_color(c_white);
+	draw_text(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/2, 
+		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/2, "You died. Click to restart");
+		
+	draw_set_color(originalColor);
 }
 
+if (room == LargeRoom && !instance_exists(o_boss1)) {
+	var originalColor = draw_get_color();
+	draw_set_halign(fa_center);
+	draw_set_color(c_white);
+	draw_text(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/2, 
+		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/2, "You've beaten the Game!");
+		
+	draw_set_color(originalColor);
+	instance_deactivate_object(o_mob);
+	instance_deactivate_object(o_proj);
+}
 
 if (room == TutorialRoom && instance_exists(o_player)) {
 	var originalColor = draw_get_color();

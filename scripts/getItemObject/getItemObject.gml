@@ -13,6 +13,6 @@ function getItemObject(item_type){
 		
 		case ITEM_NONE:
 		default:
-			return noone;
+			return -1;
 	}
 }

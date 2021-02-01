@@ -56,11 +56,9 @@ if (pickup_pressed) {
 	}
 	ds_list_destroy(pickups);
 }
-if x>room_width x=room_width; if x<0 x=0; if y>room_height y=room_height; if y<0 y=0;
-
 
 // update sprite for self and weapon
-if point_distance(x,y,mouse_x,mouse_y) > 1 {
+if (instance_exists(weaponId)) {
 	var facing_angle = point_direction(x, y, mouse_x, mouse_y);
 	image_xscale = (facing_angle > 90 && facing_angle < 270) ? -1 : 1;
 	
@@ -83,7 +81,7 @@ if point_distance(x,y,mouse_x,mouse_y) > 1 {
 
 // update weapon state
 if (weapon_cooldown-- < 0) {weapon_cooldown = 0;}
-if (weapon_type != ITEM_NONE && mouse_check_button_pressed(mb_left)) {
+if (weapon_cooldown <= 0 && weapon_type != ITEM_NONE && mouse_check_button_pressed(mb_left)) {
 	var arc = 0;
 	var range = 0;
 	var cooldown = 0;
@@ -97,20 +95,20 @@ if (weapon_type != ITEM_NONE && mouse_check_button_pressed(mb_left)) {
 			damage = 1;
 			break;
 		case ITEM_SWORD:
-			arc = 70;
-			range = abs(sprite_get_width(s_sword)) + abs(sprite_get_width(s_sword));
+			arc = 60;
+			range = abs(sprite_get_width(s_sword)) + abs(sprite_get_xoffset(s_sword));
 			cooldown = 30;
 			damage = 2;
 			break;
 		case ITEM_SPEAR:
 			arc = 30;
-			range = abs(sprite_get_width(s_spear)) + abs(sprite_get_width(s_spear));
+			range = abs(sprite_get_width(s_spear)) + abs(sprite_get_xoffset(s_spear));
 			cooldown = 30;
 			damage = 2;
 			break;
 		case ITEM_LONGSWORD:
-			arc = 60;
-			range = abs(sprite_get_width(s_longsword)) + abs(sprite_get_width(s_longsword));
+			arc = 45;
+			range = abs(sprite_get_width(s_longsword)) + abs(sprite_get_xoffset(s_longsword));
 			cooldown = 30;
 			damage = 2;
 			break;
